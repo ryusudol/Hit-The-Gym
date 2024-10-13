@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/signin.css" />
+    <script
+      src="https://kit.fontawesome.com/7daf78b674.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Hit the Gym</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav-bar">
+        <div class="logo-section">
+          <div id="logo-wrapper">
+            <a href="./index.html"
+              ><i id="logo-img" class="fa-solid fa-dumbbell"></i
+            ></a>
+          </div>
+          <a href="./index.html" id="logo">HTG</a>
+        </div>
+      </div>
+    </header>
+    <div class="login-box">
+      <h2>Login</h2>
+      <form action="/login", method="post">
+        <div class="user-box">
+          <input type="text" id="login-username" name="" required />
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="login-password" name="" required />
+          <label>Password</label>
+        </div>
+        <div class="button-form">
+          <div>
+            <button type="submit" id="login-submit">Login</button>
+          </div>
+          <div id="register-wrapper">
+            <span>Don't you have an account ?</span>
+            <a id="register" href="signup.html"> Register</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB11Vd1pJtugBHZ06KfO0vfnIDLUf6dqxQ",
+        authDomain: "easylogin-cf124.firebaseapp.com",
+        projectId: "easylogin-cf124",
+        storageBucket: "easylogin-cf124.appspot.com",
+        messagingSenderId: "598472562700",
+        appId: "1:598472562700:web:79ea17423234831dbd3629",
+        measurementId: "G-0EMB0KHCQG"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
+      document.getElementById('login-submit').addEventListener('click', (event)=>{
+        event.preventDefault()
+        const loginemail = document.getElementById('login-username').value
+        const loginpassword = document.getElementById('login-password').value
+        console.log(loginemail, loginpassword)
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, loginemail, loginpassword)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user)
+          location.href='index.html'
+        })
+        .catch((error) => {
+          console.log("login is failed")
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert("Login Fail : Check your email and password again")
+        });
+      })
+
+
+
+    </script>
+  </body>
+</html>

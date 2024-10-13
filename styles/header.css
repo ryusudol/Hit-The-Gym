@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+
+:root {
+  --font-color-dark: #faf9f6;
+  --mild-white: #f0f5fe;
+  --mild-black: #2b2d31;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  color: var(--mild-white);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--font-color-dark);
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.logo-name {
+  font-family: "Zen Dots", cursive;
+  user-select: none;
+}
+
+/* header section */
+/******************/
+header {
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+header .logo-section {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header .logo-section #logo-wrapper {
+  margin-right: 0.8rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+header #logo-img {
+  color: white;
+  font-size: 2rem;
+}
+
+header a#logo {
+  font-size: 2rem;
+  font-family: "Zen Dots", cursive;
+  color: white;
+}
+
+header .nav-bar {
+  font-size: 1.2rem;
+}
+
+header .nav-btn {
+  text-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
+
+header .nav-btn:hover {
+  text-shadow: 0 0 10px #0080ff;
+}
+
+header .func ul {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+header .func li {
+  position: relative;
+}
+
+header .func .nav-btn {
+  margin-right: 2rem;
+}
+
+header .user {
+  flex-direction: row;
+}
+
+header .user .nav-btn {
+  margin-left: 2rem;
+}
+
+header ul.modal {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 1.5rem;
+  background-color: var(--mild-white);
+  flex-direction: column;
+  padding: 0.4rem 0.8rem;
+  text-align: start;
+}
+
+header .modal li {
+  margin: 0.5rem 0;
+}
+
+header .modal a {
+  position: relative;
+  bottom: 0;
+  font-size: 0.8rem;
+  color: var(--mild-black);
+  transition: all 0.15s ease-in-out;
+}
+
+header .modal a:hover {
+  bottom: 2px;
+}
+
+header #insta-logo-wrapper {
+  background: linear-gradient(to bottom left);
+  border-radius: 30%;
+  transition: all 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header #insta-logo-wrapper:hover {
+  background: linear-gradient(
+    to bottom left,
+    #405de6,
+    #5b51d8,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d,
+    #f56040,
+    #f77737,
+    #fcaf45,
+    #ffdc80
+  );
+  text-shadow: none;
+}

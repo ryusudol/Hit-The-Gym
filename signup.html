@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/signup.css" />
+    <script
+      src="https://kit.fontawesome.com/7daf78b674.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Hit the Gym</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav-bar">
+        <div class="logo-section">
+          <div id="logo-wrapper">
+            <a href="./index.html"
+              ><i id="logo-img" class="fa-solid fa-dumbbell"></i
+            ></a>
+          </div>
+          <a href="./index.html" id="logo">HTG</a>
+        </div>
+      </div>
+    </header>
+    <div class="signup-box">
+      <h2>Signup</h2>
+      <form action="/signup" method="post">
+        <div class="user-box">
+          <input type="email" id="username" name="username" required />
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="password" name="password" required />
+          <label>Password</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="password2" name="password2" required />
+          <label>Confirm Password</label>
+        </div>
+        <div class="button-form">
+          <div>
+            <button type="submit" id="signup-submit">SIGNUP</button>
+          </div>
+          <div id="register">
+            Do you have an account ?
+            <a id="login-in-signup" href="signin.html"> Login</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB11Vd1pJtugBHZ06KfO0vfnIDLUf6dqxQ",
+      authDomain: "easylogin-cf124.firebaseapp.com",
+      projectId: "easylogin-cf124",
+      storageBucket: "easylogin-cf124.appspot.com",
+      messagingSenderId: "598472562700",
+      appId: "1:598472562700:web:79ea17423234831dbd3629",
+      measurementId: "G-0EMB0KHCQG",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
+    document.getElementById("signup-submit").addEventListener("click", (event) => {
+      event.preventDefault();
+      const email = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const password2 = document.getElementById("password2").value;
+
+      if (password != password2) {
+        alert("passwords are   not matched");
+      } else {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            console.log(userCredential);
+            // Signed in
+            const user = userCredential.user;
+            location.href = "signin.html";
+          })
+          .catch((error) => {
+            console.log("error");
+            alert("Signup Fail : Check your email again.");
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+      }
+    });
+
+    </script>
+  </body>
+</html>
